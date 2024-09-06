@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Member{
+  id String @id @default(uuid()) @db.VarChar(100)
+  code String @unique @db.VarChar(100)
+  name String @db.VarChar(100)
+  penalize Boolean @default(false)
+  end_penalize DateTime?
+  books MemberBorrowBook[]
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt 
+
+  @@map("members")
+}
+
+model Book{
+  id String @id @default(uuid()) @db.VarChar(100)
+  code String @unique @db.VarChar(100)
+  title String @db.VarChar(100)
+  author String @db.VarChar(100)
+  stock Int @db.Int
+  members MemberBorrowBook[]
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt 
+
+  @@map("books")
+}
+
+model MemberBorrowBook {
+  member Member @relation(fields: [memberId], references: [id])
+  memberId String
+  book Book @relation(fields: [bookId], references: [id])
+  bookId String
+  borrowedAt DateTime @default(now())
+  returnedAt DateTime? 
+
+  @@id([memberId, bookId])
+  @@map("member_borrow_books")
+}
