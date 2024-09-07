@@ -10,10 +10,8 @@ class MemberService {
   async getAllMember(page = 1) {
     try {
       const filter = {};
-      const members = await this.memberRepository.findAllMember(filter, page);
-      return {
-        members,
-      };
+      const result = await this.memberRepository.findAllMember(filter, page);
+      return result;
     } catch (error) {
       throw new ResponseError(500, "INTERNAL SERVER ERROR");
     }
@@ -21,18 +19,15 @@ class MemberService {
 
   async getDetailMember(memberId) {
     try {
-      const { id, code, name, penalize, penalizeUntil, books } =
-        await this.memberRepository.getDetailMember(memberId);
+      const result = await this.memberRepository.getDetailMember(memberId);
+      if (result == null) {
+        throw new ResponseError(404, "data not found");
+      }
 
-      return {
-        id,
-        code,
-        name,
-        penalize,
-        penalizeUntil,
-        books: books.length,
-      };
-    } catch (error) {}
+      return result;
+    } catch (error) {
+      throw new ResponseError(404, error.message);
+    }
   }
 
   async create(newMemberRequest) {
@@ -41,7 +36,7 @@ class MemberService {
       const result = await this.memberRepository.createMember(newMember);
       return result;
     } catch (error) {
-      throw new ResponseError(500, "Internal Server Error");
+      throw new ResponseError(400, error.message);
     }
   }
 }

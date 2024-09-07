@@ -20,7 +20,8 @@ class MemberController {
   async getMemberById(req, res, next) {
     try {
       const memberId = req.params.id;
-      const { ...result } = await this.memberService.getDetailMember(memberId);
+      const result = await this.memberService.getDetailMember(memberId);
+      result.books = result.books.length;
       res.status(200).json({
         status: 200,
         message: `success get member with id ${memberId}`,
@@ -41,7 +42,7 @@ class MemberController {
         data: result,
       });
     } catch (error) {
-      console.log(error);
+      next(error);
     }
   }
 }

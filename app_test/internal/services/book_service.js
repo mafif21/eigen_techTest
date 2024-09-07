@@ -10,10 +10,8 @@ class BookService {
   async getAllBooks(page = 1) {
     try {
       const filter = { stock: { gt: 0 } };
-      const books = await this.bookRepository.findAllBook(filter, page);
-      return {
-        books,
-      };
+      const results = await this.bookRepository.findAllBook(filter, page);
+      return results;
     } catch (error) {
       throw new ResponseError(500, "INTERNAL SERVER ERROR");
     }
@@ -27,7 +25,7 @@ class BookService {
       if (error instanceof ResponseError) {
         throw error;
       }
-      throw new ResponseError(500, "Internal Server Error");
+      throw new ResponseError(400, error.message);
     }
   }
 }

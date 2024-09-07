@@ -44,7 +44,7 @@ class MemberRepository {
       });
       return member;
     } catch (error) {
-      throw error;
+      // console.log(error);
     }
   }
 
