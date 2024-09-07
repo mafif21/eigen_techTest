@@ -10,6 +10,9 @@ const apiRoute = (bookController, memberController) => {
   router.post("/books", (req, res, next) =>
     bookController.createBook(req, res, next)
   );
+  router.delete("/books/:id", (req, res, next) =>
+    bookController.deleteBook(req, res, next)
+  );
 
   // members route
   router.get("/members", (req, res, next) =>
@@ -20,6 +23,9 @@ const apiRoute = (bookController, memberController) => {
   );
   router.post("/members", (req, res, next) =>
     memberController.createMember(req, res, next)
+  );
+  router.delete("/members/:id", (req, res, next) =>
+    memberController.deleteMember(req, res, next)
   );
 
   return router;

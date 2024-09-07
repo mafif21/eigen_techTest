@@ -52,6 +52,32 @@ class BookRepository {
       throw error;
     }
   }
+
+  async getDetailBook(bookId) {
+    try {
+      const book = await this.prisma.book.findUnique({
+        where: {
+          id: bookId,
+        },
+      });
+      return book;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async delete(bookId) {
+    try {
+      const deleteBook = await this.prisma.book.delete({
+        where: {
+          id: bookId,
+        },
+      });
+      return deleteBook;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default BookRepository;

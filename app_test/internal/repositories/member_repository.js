@@ -44,7 +44,7 @@ class MemberRepository {
       });
       return member;
     } catch (error) {
-      // console.log(error);
+      throw error;
     }
   }
 
@@ -62,6 +62,19 @@ class MemberRepository {
       });
 
       return createMember;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async delete(memberId) {
+    try {
+      const deleteMember = await this.prisma.member.delete({
+        where: {
+          id: memberId,
+        },
+      });
+      return deleteMember;
     } catch (error) {
       throw error;
     }

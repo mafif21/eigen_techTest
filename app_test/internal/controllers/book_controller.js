@@ -30,6 +30,26 @@ class BookController {
       next(error);
     }
   }
+
+  async deleteBook(req, res, next) {
+    try {
+      const id = req.params.id;
+      if (!id) {
+        return res.status(400).json({
+          status: 400,
+          message: "ID is required",
+        });
+      }
+
+      const _ = await this.bookService.delete(id);
+      res.status(200).json({
+        status: 201,
+        message: "success delete data",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 export default BookController;

@@ -39,6 +39,21 @@ class MemberService {
       throw new ResponseError(400, error.message);
     }
   }
+
+  async delete(memberId) {
+    try {
+      const member = await this.memberRepository.getDetailMember(memberId);
+      console.log(member);
+      if (!member) {
+        throw new ResponseError(404, "data not found");
+      }
+
+      const remove = await this.memberRepository.delete(member.id);
+      return remove;
+    } catch (error) {
+      throw new ResponseError(400, error.message);
+    }
+  }
 }
 
 export default MemberService;
