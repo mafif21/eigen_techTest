@@ -21,9 +21,16 @@ class MemberService {
 
   async getDetailMember(memberId) {
     try {
-      const found = await this.memberRepository.getDetailMember(memberId);
+      const { id, code, name, penalize, penalizeUntil, books } =
+        await this.memberRepository.getDetailMember(memberId);
+
       return {
-        found,
+        id,
+        code,
+        name,
+        penalize,
+        penalizeUntil,
+        books: books.length,
       };
     } catch (error) {}
   }

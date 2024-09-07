@@ -34,8 +34,14 @@ class MemberRepository {
         where: {
           id: memberId,
         },
+        include: {
+          books: {
+            include: {
+              book: true,
+            },
+          },
+        },
       });
-
       return member;
     } catch (error) {
       throw error;
