@@ -24,7 +24,10 @@ class BookService {
       const newBook = validate(createBookValidation, newBookrequest);
       return await this.bookRepository.createBook(newBook);
     } catch (error) {
-      throw new ResponseError(400, "data not valid");
+      if (error instanceof ResponseError) {
+        throw error;
+      }
+      throw new ResponseError(500, "Internal Server Error");
     }
   }
 }

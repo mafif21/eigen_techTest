@@ -12,7 +12,7 @@ model Member{
   code String @unique @db.VarChar(100)
   name String @db.VarChar(100)
   penalize Boolean @default(false)
-  end_penalize DateTime?
+  penalizeUntil DateTime?
   books MemberBorrowBook[]
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt 

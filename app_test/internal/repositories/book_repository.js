@@ -1,6 +1,6 @@
 import { prismaClient } from "../app/database.js";
 class BookRepository {
-  constructor(db) {
+  constructor() {
     this.prisma = prismaClient;
   }
 
@@ -19,6 +19,13 @@ class BookRepository {
         },
         skip: (page - 1) * 10,
         take: 10,
+        select: {
+          id: true,
+          code: true,
+          title: true,
+          author: true,
+          stock: true,
+        },
       });
 
       return books;
