@@ -7,6 +7,9 @@ import MemberRepository from "../repositories/member_repository.js";
 import MemberService from "../services/member_service.js";
 import MemberController from "../controllers/member_controller.js";
 import { apiRoute } from "../route/api.js";
+import BookLoanRepository from "../repositories/book_loan_repository.js";
+import BookLoanservice from "../services/book_loan_service.js";
+import BookLoanController from "../controllers/book_loan _controller.js";
 
 const app = express();
 app.use(express.json());
@@ -19,7 +22,15 @@ const memberRepository = new MemberRepository();
 const memberService = new MemberService(memberRepository);
 const memberController = new MemberController(memberService);
 
-app.use("/api", apiRoute(bookController, memberController));
+const loanRepository = new BookLoanRepository();
+const loanService = new BookLoanservice(
+  loanRepository,
+  memberRepository,
+  bookRepository
+);
+const loanController = new BookLoanController(loanService);
+
+app.use("/api", apiRoute(bookController, memberController, loanController));
 app.use(errorMiddleware);
 
 export default app;

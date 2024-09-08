@@ -34,6 +34,7 @@ model Book{
 }
 
 model MemberBorrowBook {
+  id String @id @default(uuid()) @db.VarChar(100)
   member Member @relation(fields: [memberId], references: [id])
   memberId String
   book Book @relation(fields: [bookId], references: [id])
@@ -41,6 +42,5 @@ model MemberBorrowBook {
   borrowedAt DateTime @default(now())
   returnedAt DateTime? 
 
-  @@id([memberId, bookId])
   @@map("member_borrow_books")
 }

@@ -2,7 +2,7 @@ import express from "express";
 
 const router = express.Router();
 
-const apiRoute = (bookController, memberController) => {
+const apiRoute = (bookController, memberController, loanController) => {
   //  books route
   router.get("/books", (req, res, next) =>
     bookController.getAll(req, res, next)
@@ -26,6 +26,11 @@ const apiRoute = (bookController, memberController) => {
   );
   router.delete("/members/:id", (req, res, next) =>
     memberController.deleteMember(req, res, next)
+  );
+
+  // loan route
+  router.post("/loan", (req, res, next) =>
+    loanController.bookLoan(req, res, next)
   );
 
   return router;

@@ -43,7 +43,6 @@ class MemberService {
   async delete(memberId) {
     try {
       const member = await this.memberRepository.getDetailMember(memberId);
-      console.log(member);
       if (!member) {
         throw new ResponseError(404, "data not found");
       }

@@ -21,7 +21,7 @@ class MemberController {
     try {
       const memberId = req.params.id;
       const result = await this.memberService.getDetailMember(memberId);
-      result.books = result.books.length;
+      // result.books = result.books.length;
       res.status(200).json({
         status: 200,
         message: `success get member with id ${memberId}`,

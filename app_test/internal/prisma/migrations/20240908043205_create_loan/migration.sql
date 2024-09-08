@@ -28,12 +28,13 @@ CREATE TABLE `books` (
 
 -- CreateTable
 CREATE TABLE `member_borrow_books` (
+    `id` VARCHAR(100) NOT NULL,
     `memberId` VARCHAR(191) NOT NULL,
     `bookId` VARCHAR(191) NOT NULL,
     `borrowedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `returnedAt` DATETIME(3) NULL,
 
-    PRIMARY KEY (`memberId`, `bookId`)
+    PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
