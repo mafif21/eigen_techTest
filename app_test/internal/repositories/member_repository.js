@@ -36,6 +36,9 @@ class MemberRepository {
         },
         include: {
           books: {
+            where: {
+              returnedAt: null,
+            },
             include: {
               book: true,
             },

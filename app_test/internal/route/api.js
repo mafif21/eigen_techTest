@@ -29,8 +29,17 @@ const apiRoute = (bookController, memberController, loanController) => {
   );
 
   // loan route
+  router.get("/loan", (req, res, next) =>
+    loanController.getAll(req, res, next)
+  );
+  router.get("/loan/:id", (req, res, next) =>
+    loanController.getLoanById(req, res, next)
+  );
   router.post("/loan", (req, res, next) =>
     loanController.bookLoan(req, res, next)
+  );
+  router.patch("/loan/:id/return", (req, res, next) =>
+    loanController.bookReturn(req, res, next)
   );
 
   return router;

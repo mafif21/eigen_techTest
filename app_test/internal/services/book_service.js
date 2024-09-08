@@ -13,6 +13,7 @@ class BookService {
       const results = await this.bookRepository.findAllBook(filter, page);
       return results;
     } catch (error) {
+      console.log(error);
       throw new ResponseError(500, "INTERNAL SERVER ERROR");
     }
   }
