@@ -89,14 +89,14 @@
 ## Extras
 
 - ✅ Implement [DDD Pattern]([https://khalilstemmler.com/articles/categories/domain-driven-design/](https://khalilstemmler.com/articles/categories/domain-driven-design/))
-- ✅ Implement Unit Testing
+- ❌ Implement Unit Testing
 
 ## Notes
 - Feel free to add some structure or plugins
 
 
 ------
-
+xw
 # ALGORITMA
 Kerjakan dengan menggunakan bahasa pemograman yg anda kuasai, buat folder terpisah untuk soal ini
 
