@@ -1,0 +1,1219 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "API Documentation",
+    "description": "API for backend technical test at eigen",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Development Server"
+    }
+  ],
+  "paths": {
+    "/books": {
+      "get": {
+        "summary": "Get all books",
+        "responses": {
+          "200": {
+            "description": "A list of books",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getBook"
+                },
+                "examples": {
+                  "Get All Books": {
+                    "$ref": "#/components/examples/getAllBooks"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "$ref": "#/components/examples/500"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new book",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/createBookRequest"
+              },
+              "examples": {
+                "create book request": {
+                  "$ref": "#/components/examples/createBookRequest"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success Create New Book",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createBookResponse"
+                },
+                "examples": {
+                  "Create New Book": {
+                    "$ref": "#/components/examples/createBookResponse"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request or Invalid Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Bad Request": {
+                    "$ref": "#/components/examples/400"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "$ref": "#/components/examples/500"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books/{id}": {
+      "delete": {
+        "summary": "Delete a book by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the book to delete",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success Delete Book By ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/deleteBookResponse"
+                },
+                "examples": {
+                  "Delete Book": {
+                    "$ref": "#/components/examples/deleteBookResponse"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "data not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Data Not Found": {
+                    "$ref": "#/components/examples/404"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "$ref": "#/components/examples/500"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/members": {
+      "get": {
+        "summary": "Get all members",
+        "responses": {
+          "200": {
+            "description": "A list of members",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getBook"
+                },
+                "examples": {
+                  "Get Members": {
+                    "$ref": "#/components/examples/getAllMembers"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "$ref": "#/components/examples/500"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new member",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/memberRequest"
+              },
+              "examples": {
+                "create new member": {
+                  "$ref": "#/components/examples/createMember"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success Create New Member",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createMemberResponse"
+                },
+                "examples": {
+                  "Create New Member": {
+                    "$ref": "#/components/examples/createMemberResponse"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request or Invalid Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Bad Request": {
+                    "$ref": "#/components/examples/400"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "$ref": "#/components/examples/500"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/members/{id}": {
+      "get": {
+        "summary": "Get a member by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the member to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Member details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/memberDetailResponse"
+                },
+                "examples": {
+                  "Member Detail With Loan": {
+                    "$ref": "#/components/examples/memberDetailResponseWithLoan"
+                  },
+                  "Member Detail With No Loan": {
+                    "$ref": "#/components/examples/memberDetailResponse"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "data not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Data Not Found": {
+                    "$ref": "#/components/examples/404"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "$ref": "#/components/examples/500"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a member by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the member to delete",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success Delete Member By ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/deleteMemberResponse"
+                },
+                "examples": {
+                  "Delete Book": {
+                    "$ref": "#/components/examples/deleteMemberResponse"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "data not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Data Not Found": {
+                    "$ref": "#/components/examples/404"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "$ref": "#/components/examples/500"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/loan": {
+      "get": {
+        "summary": "Get all loans",
+        "responses": {
+          "200": {
+            "description": "A list of loans",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/allLoans"
+                },
+                "examples": {
+                  "Get All Book Loans": {
+                    "$ref": "#/components/examples/allLoansResult"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new loan",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/loanRequest"
+              },
+              "examples": {
+                "Create New Loan": {
+                  "$ref": "#/components/examples/loanRequest"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success create new loan",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loanResponse"
+                },
+                "examples": {
+                  "Success Create Book Loans": {
+                    "$ref": "#/components/examples/loanResult"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request or Invalid Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Bad Request": {
+                    "$ref": "#/components/examples/400"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "$ref": "#/components/examples/500"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/loan/{id}": {
+      "get": {
+        "summary": "Get a loan by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the loan to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Loan details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loanResponse"
+                },
+                "examples": {
+                  "Success Get Loan By ID": {
+                    "$ref": "#/components/examples/foundLoan"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "data not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Data Not Found": {
+                    "$ref": "#/components/examples/404"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "$ref": "#/components/examples/500"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/loan/{id}/return": {
+      "patch": {
+        "summary": "Return a book by loan ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the loan to return",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book returned successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/returnBookResponse"
+                },
+                "examples": {
+                  "Success Return Book": {
+                    "$ref": "#/components/examples/returnBookResponse"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "data not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Data Not Found": {
+                    "$ref": "#/components/examples/404"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request or Invalid Input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Bad Request": {
+                    "$ref": "#/components/examples/400"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "$ref": "#/components/examples/500"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "getBook": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "200"
+          },
+          "message": {
+            "type": "string",
+            "example": "success get all books"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "author": {
+                  "type": "string"
+                },
+                "stock": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "error": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "createBookResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "author": {
+                "type": "string"
+              },
+              "stock": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      },
+      "createBookRequest": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string"
+          },
+          "stock": {
+            "type": "integer"
+          }
+        }
+      },
+      "deleteBookResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "memberRequest": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "456"
+          },
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          }
+        }
+      },
+      "createMemberResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "penalize": {
+                "type": "boolean"
+              },
+              "penalizeUntil": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "memberDetailResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "200"
+          },
+          "message": {
+            "type": "string",
+            "example": "success get all books"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "penalize": {
+                "type": "boolean"
+              },
+              "penalizeUntil": {
+                "type": "string"
+              },
+              "books": {
+                "type": "array",
+                "items" : {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "memberId": {
+                      "type": "string"
+                    },
+                    "bookId": {
+                      "type": "string"
+                    },
+                    "borrowedAt": {
+                      "type": "string"
+                    },
+                    "returnedAt": {
+                      "type": "string"
+                    },
+                    "book": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "789"
+                        },
+                        "code": {
+                          "type": "string",
+                          "example": "BOOK001"
+                        },
+                        "title": {
+                          "type": "string",
+                          "example": "Introduction to Golang"
+                        },
+                        "author": {
+                          "type": "string",
+                          "example": "John Author"
+                        },
+                        "stock": {
+                          "type": "integer",
+                          "example": 3
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+      }
+  },
+      "deleteMemberResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "returnBookResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "memberId": {
+                "type": "string"
+              },
+              "bookId": {
+                "type": "string"
+              },
+              "borrowedAt": {
+                "type": "string"
+              },
+              "returnedAt": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "allLoans": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "memberId": {
+                  "type": "string"
+                },
+                "bookId": {
+                  "type": "string"
+                },
+                "borrowedAt": {
+                  "type": "string"
+                },
+                "returnedAt": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "loanResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "memberId": {
+                "type": "string"
+              },
+              "bookId": {
+                "type": "string"
+              },
+              "borrowedAt": {
+                "type": "boolean"
+              },
+              "returnedAt": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "loanRequest": {
+        "type": "object",
+        "properties": {
+          "memberId": {
+            "type": "string"
+          },
+          "bookId": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "examples": {
+      "getAllBooks": {
+        "description": "get all books",
+        "value": {
+          "status": 200,
+          "message": "success get all books",
+          "data": [
+            {
+              "id": "73c2d921-82df-4505-9d7a-5351272f0561",
+              "code": "C02",
+              "title": "The Great Gatsby",
+              "author": "F. Scott Fitzgerald",
+              "stock": 10
+            }
+          ]
+        }
+      },
+      "createBookRequest": {
+        "description": "Success Create New Book",
+        "value": {
+          "code": "C02",
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
+          "stock": 10
+        }
+      },
+      "createBookResponse": {
+        "description": "success create new book",
+        "value": {
+          "status": 201,
+          "message": "success create new data",
+          "data": {
+            "code": "C02",
+            "title": "The Great Gatsby",
+            "author": "F. Scott Fitzgerald",
+            "stock": 10
+          }
+        }
+      },
+      "deleteBookResponse": {
+        "description": "success delete data by id",
+        "value": {
+          "status": 201,
+          "message": "success delete data"
+        }
+      },
+      "getAllMembers": {
+        "description": "get all members",
+        "value": {
+          "status": 200,
+          "message": "success get all members",
+          "data": [
+            {
+              "id": "f5a90dc7-b326-43e1-8bbc-92dc0630e5b5",
+              "code": "M001",
+              "name": "Ratu",
+              "penalize": false,
+              "penalizeUntil": null,
+              "created_at": "2024-09-08T08:35:50.530Z",
+              "updated_at": "2024-09-08T08:35:50.530Z"
+            }
+          ]
+        }
+      },
+      "createMember": {
+        "description": "create new member",
+        "value": {
+          "code": "M001",
+          "name": "Ratu"
+        }
+      },
+      "memberDetailResponseWithLoan": {
+        "description": "succes get member detail with loan",
+        "value": {
+          "status": 200,
+          "message": "success get member with id f5a90dc7-b326-43e1-8bbc-92dc0630e5b5",
+          "data": {
+            "id": "f5a90dc7-b326-43e1-8bbc-92dc0630e5b5",
+            "code": "M001",
+            "name": "Ratu",
+            "penalize": false,
+            "penalizeUntil": null,
+            "created_at": "2024-09-08T08:35:50.530Z",
+            "updated_at": "2024-09-08T08:35:50.530Z",
+            "books": [
+              {
+                "id": "d98983c2-4ecd-4fc7-acb9-f34e585e570f",
+                "memberId": "f5a90dc7-b326-43e1-8bbc-92dc0630e5b5",
+                "bookId": "d319c65b-ff9e-488d-bb72-d145a6b16003",
+                "borrowedAt": "2024-09-08T11:11:41.452Z",
+                "returnedAt": null,
+                "book": {
+                  "id": "d319c65b-ff9e-488d-bb72-d145a6b16003",
+                  "code": "C0098",
+                  "title": "The Great Gatsby",
+                  "author": "F. Scott Fitzgerald",
+                  "stock": 0,
+                  "created_at": "2024-09-08T08:36:24.543Z",
+                  "updated_at": "2024-09-08T11:11:41.452Z"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "memberDetailResponse": {
+        "description": "succes get member detail with loan",
+        "value": {
+          "status": 200,
+          "message": "success get member with id f5a90dc7-b326-43e1-8bbc-92dc0630e5b5",
+          "data": {
+            "id": "f5a90dc7-b326-43e1-8bbc-92dc0630e5b5",
+            "code": "M001",
+            "name": "Ratu",
+            "penalize": false,
+            "penalizeUntil": null,
+            "created_at": "2024-09-08T08:35:50.530Z",
+            "updated_at": "2024-09-08T08:35:50.530Z",
+            "books": []
+          }
+        }
+      },
+      "deleteMemberResponse": {
+        "description": "success delete data by id",
+        "value": {
+          "status": 201,
+          "message": "success delete data"
+        }
+      },
+      "createMemberResponse": {
+        "description": "success create new member",
+        "value": {
+          "status": 201,
+          "message": "success create new members",
+          "data": {
+            "id": "f5a90dc7-b326-43e1-8bbc-92dc0630e5b5",
+            "code": "M001",
+            "name": "Ratu",
+            "penalize": false,
+            "penalizeUntil": null
+          }
+        }
+      },
+      "allLoansResult": {
+        "description": "all loan data",
+        "value": {
+          "status": 200,
+          "message": "success get all loans",
+          "data": [
+            {
+              "id": "d98983c2-4ecd-4fc7-acb9-f34e585e570f",
+              "memberId": "f5a90dc7-b326-43e1-8bbc-92dc0630e5b5",
+              "bookId": "d319c65b-ff9e-488d-bb72-d145a6b16003",
+              "borrowedAt": "2024-09-08T11:11:41.452Z",
+              "returnedAt": null
+            }
+          ]
+        }
+      },
+      "loanResult": {
+        "description": "return single data loan",
+        "value": {
+          "status": 201,
+          "message": "success loan book",
+          "data": {
+              "id": "d98983c2-4ecd-4fc7-acb9-f34e585e570f",
+              "memberId": "f5a90dc7-b326-43e1-8bbc-92dc0630e5b5",
+              "bookId": "d319c65b-ff9e-488d-bb72-d145a6b16003",
+              "borrowedAt": "2024-09-08T11:11:41.452Z",
+              "returnedAt": null
+            }
+
+        }
+      },
+      "foundLoan": {
+        "description": "return single data loan",
+        "value": {
+          "status": 200,
+          "message": "success get loan with id 62322d76-0266-42ce-85e8-6d94adc2ea9a",
+          "data": {
+            "id": "62322d76-0266-42ce-85e8-6d94adc2ea9a",
+            "memberId": "f5a90dc7-b326-43e1-8bbc-92dc0630e5b5",
+            "bookId": "d319c65b-ff9e-488d-bb72-d145a6b16003",
+            "borrowedAt": "2024-09-08T21:53:22.286Z",
+            "returnedAt": null
+          }
+        }
+      },
+      "loanRequest": {
+        "description": "loan body request",
+        "value": {
+          "memberId": "f5a90dc7-b326-43e1-8bbc-92dc0630e5b5",
+          "bookId": "d319c65b-ff9e-488d-bb72-d145a6b16003"
+        }
+      },
+      "returnBookResponse": {
+        "description": "return book response",
+        "value": {
+          "status": 200,
+          "message": "success return book",
+          "data": {
+            "id": "d98983c2-4ecd-4fc7-acb9-f34e585e570f",
+            "memberId": "f5a90dc7-b326-43e1-8bbc-92dc0630e5b5",
+            "bookId": "d319c65b-ff9e-488d-bb72-d145a6b16003",
+            "borrowedAt": "2024-09-08T11:11:41.452Z",
+            "returnedAt": "2024-09-08T21:53:16.573Z"
+          }
+        }
+      },
+      "404": {
+        "description": "Data Not Found",
+        "value": {
+          "status": 404,
+          "message": "data not found"
+        }
+      },
+      "500": {
+        "description": "Internal Server Error",
+        "value": {
+          "status": 500,
+          "message": "INTERNAL SERVER ERROR"
+        }
+      },
+      "400": {
+        "description": "Bad request",
+        "value": {
+          "status": 400,
+          "message": "value is required"
+        }
+      }
+    }
+  }
+}
