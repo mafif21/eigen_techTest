@@ -113,7 +113,7 @@
         }
       }
     },
-    "/books/{id}": {
+    "/books/{bookId}": {
       "delete": {
         "summary": "Delete a book by ID",
         "parameters": [
@@ -277,7 +277,7 @@
         }
       }
     },
-    "/members/{id}": {
+    "/members/{memberId}": {
       "get": {
         "summary": "Get a member by ID",
         "parameters": [
@@ -490,7 +490,7 @@
         }
       }
     },
-    "/loan/{id}": {
+    "/loan/{loanId}": {
       "get": {
         "summary": "Get a loan by ID",
         "parameters": [
@@ -553,7 +553,7 @@
         }
       }
     },
-    "/loan/{id}/return": {
+    "/loan/{loanId}/return": {
       "patch": {
         "summary": "Return a book by loan ID",
         "parameters": [
